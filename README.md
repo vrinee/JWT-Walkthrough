@@ -35,7 +35,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
 
 ### 3. Middleware de Verificação
 
-* Nas primeiras linhas do código é possível achar esta seção comentada:
+* Nas primeiras linhas do código do [server.js](server.js) é possível achar esta seção comentada:
 
     ```js
     const ValidarToken = (req, res, next) => {
@@ -62,7 +62,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     return res.status(401).json({ message: 'Token inválido ou não fornecido!' });
     ```
 * Ele retorna o status 401 (Não autorizado), e junto uma mensagem para identificação do problema.
-* Agora é a hora de decodificar o token usando o JWT e nossa senha secreta encontrada no .env .
+* Agora é a hora de decodificar o token usando o JWT e nossa senha secreta encontrada no .env, insira a esta linha fora do if mas dentro do try:
     ```js
     const decodedToken = jwt.verify(token[1],process.env.JWT_SECRET);
     ```
@@ -84,7 +84,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     });
     ```
 * Nestas linhas é declarada a API de validação do Token, sendo ela utilizada para fazer requerimentos de validação à nível fora do servidor.
-* Agora vamos fazer o Handling do login, pode ser decomentada a seguinte seção do código:
+* Ainda dentro do [server.js](server.js) vamos fazer o Handling do login, pode ser decomentada a seguinte seção do código:
     ```js
     app.post("/login",(req,res)=>{
         const {body} = req;
@@ -92,7 +92,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     });
     ```
 * Por enquanto esta seção somente pega o body da requisição e depois os valores de usuário e senha encontrados dentro do body. Mas teremos que fazer o resto desse código para ele funcionar.
-* Este código é bem simples, somente precisamos utilizar uma função do mongoose para encontrar um usuário com aquele nome e senha, da seguinte forma:
+* Este código é bem simples, somente precisamos colocar dentro dele uma função do mongoose para encontrar um usuário com aquele nome e senha, da seguinte forma:
     ```js
     User.findOne({username,password}).then((user)=>{
         const token = jwt.sign({user}, process.env.JWT_SECRET);
@@ -116,7 +116,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     });
     ```
 * Essa declaração de constante recebe o valor do fetch da rota de login quando post, contendo como body o nome e senha fornecidos pelo usuário em forma de um JSON "Stringficado".
-* Logo abaixo pode se encontrar a seguinte linha:
+* Logo abaixo pode se encontrar a seguinte linha, ainda dentro do try:
     ```js
     const data = await response.json();
     ```
@@ -150,7 +150,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     .then(data => {
     ```
 * Aqui fazemos algo similar ao que é apresentado no login, fazemos um fetch na API de validação enviando o token que temos.Então a resposta é convertida em json e atribuída a 'data'. Igual no login.
-* Tendo a os dados(data) em mão, fazemos um if para verificar se esta data é válida e então realizamos o código a seguir:
+* Tendo a os dados(data) em mão, fazemos um if para verificar se esta data é válida e então realizamos o código a seguir dentro do then(data):
     ````js
     let videoPath = data.safeFile;  
     safeimgtag.src = '/safe/opened.png';
@@ -173,7 +173,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     });
     ```
 * Por enquanto a API está declarando o caminho do vídeo baseado no nome dado na URL da API, mas ainda precisamos enviar o vídeo de alguma forma.
-* São duas formas possíveis de se fazer:
+* São duas formas possíveis de se fazer, sendo o código delas dentro dessa API:
 #### 6.1. Enviar Arquivo
 * Essa é uma forma mais simples de se fazer o envio do vídeo, porém não é o ideal, uma vez que manda o vídeo de uma vez só não importando o seu tamanho.
 * O código para ele é o seguinte:
