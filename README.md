@@ -72,7 +72,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     req.user = { valid: true, userName: decodedToken.user.username, safeFile: decodedToken.user.safeFile  };
     ```
 * Pronto, terminamos de mecher no middleware da verificação. Vale adicionar que ao invés de um res, esta função retorna os valores dentro da requisição, sendo assim valores acessados mais facilmente.
-* Antes de seguirmos para a próxima parte, podemos olhar para a as ultimas linhas do servidor, onde se encontra a seguinte função:
+* Antes de seguirmos para a próxima parte, podemos olhar para a as ultimas linhas do servidor, onde se encontra a seguinte função comentada, descomente esta linha:
     ```js
     app.get("/api/validate-token", ValidarToken, (req,res)=>{
         if(!req.user || !req.user.valid) {

@@ -121,6 +121,7 @@ app.get("/api/safe-file/:videofile", (req, res) => {
 */
 
 // API GET para validar o token JWT
+/*
 app.get("/api/validate-token", ValidarToken, (req,res)=>{
     if(!req.user || !req.user.valid) {
             res.status(403).json({valid: false, message: "Invalid token"});
@@ -129,6 +130,7 @@ app.get("/api/validate-token", ValidarToken, (req,res)=>{
             res.json(req.user);
         }
 });
+*/
 // listener da aplicação
 const listener = app.listen(process.env.PORT || 3000, function () {
     console.log("Seu app esta no port " + listener.address().port);
