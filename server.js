@@ -114,10 +114,10 @@ app.get("/safe", (req,res)=>{
 // API GET para pegar o arquivo seguro
 
 /*
-app.get("/api/safe-file/:videofile", (req, res) => {
-    const videofile = req.params.videofile;
-    const filePath = path.join(__dirname, 'safe-videos', videofile);
-});
+let videoPath = data.safeFile;  
+            safeimgtag.src = '/safe/opened.png';
+            videotag.innerHTML = `<video id="videoPlayer" controls autoplay>  <source src="/api/safe-file/${videoPath}" type="video/mp4"></video>`;
+
 */
 
 // API GET para validar o token JWT
