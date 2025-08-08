@@ -202,7 +202,7 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     ```
 * Primeiro é pego dados importantes do vídeo de forma síncrona usando a função fs.statSync() .
 * Depois a response do header informa o formato do vídeo e o tamanho dele.
-* E para finalizar é criada a stream e sua handling correta.
+* E para finalizar é criado um caminho de leitura para a stream, e tambem o pipe, que cria o caminho de escrita da stream, desta forma o vide aparecerá no html.
 * Essa é a melhor forma de se fazer embora ela tenha sido feita muito simples e pode ser expandida de forma mais adequada e com handling para mudar o momento do vídeo.
 
 ### 7. Finalizar
@@ -210,7 +210,9 @@ Um simples projeto base para aprender JWT com a IA23 >.<
     ```
     npm run start
     ```
-* Muito obrigado galerinha >.<!!!!!!
+* Muito obrigado galerinha >.<!!!!
+![fotinha de tchau](readmeDependence/byeImage.jpg)
+
 ### Observações importantes
 
 * Somente descomente uma seção de código quando pedido.
